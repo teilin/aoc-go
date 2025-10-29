@@ -1,4 +1,4 @@
-package puzzle
+package models
 
 type Puzzle interface {
 	Part1() string

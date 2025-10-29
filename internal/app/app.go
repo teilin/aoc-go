@@ -3,15 +3,15 @@ package app
 import (
 	"fmt"
 
-	"github.com/teilin/aoc-go/pkg/puzzle"
+	"github.com/teilin/aoc-go/internal/di"
 )
 
 type App struct {
-	PuzzleRegistry puzzle.Registry
+	PuzzleRegistry di.Container
 }
 
 func (a *App) Run(year int, day int) {
-	p, err := a.PuzzleRegistry.GetPuzzle(year, day)
+	p, err := a.PuzzleRegistry.Get(year, day)
 	if err != nil {
 		fmt.Printf("Error retrieving puzzle for year %d, day %d: %v\n", year, day, err)
 		return

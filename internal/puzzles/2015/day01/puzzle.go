@@ -1,19 +1,17 @@
 package day01
 
-import "fmt"
-
 type Puzzle struct{}
 
 func (p *Puzzle) Part1() string {
-    // Implement the logic for part 1 of the puzzle here
-    return "Result of Part 1"
+	// Implement the logic for part 1 of the puzzle here
+	return "Result of Part 1"
 }
 
 func (p *Puzzle) Part2() string {
-    // Implement the logic for part 2 of the puzzle here
-    return "Result of Part 2"
+	// Implement the logic for part 2 of the puzzle here
+	return "Result of Part 2"
 }
 
 func New() *Puzzle {
-    return &Puzzle{}
+	return &Puzzle{}
 }

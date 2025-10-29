@@ -4,34 +4,34 @@ import (
 	"fmt"
 	"sync"
 
-	"github.com/teilin/aoc-go/pkg/puzzle"
+	"github.com/teilin/aoc-go/internal/models"
 )
 
 type Container struct {
 	mu       sync.RWMutex
-	registry map[string]puzzle.Puzzle
+	registry map[string]models.Puzzle
 }
 
 func NewContainer() *Container {
 	return &Container{
-		registry: make(map[string]puzzle.Puzzle),
+		registry: make(map[string]models.Puzzle),
 	}
 }
 
-func (c *Container) Register(year string, day string, puzzle puzzle.Puzzle) {
+func (c *Container) Register(year int, day int, puzzle models.Puzzle) {
 	c.mu.Lock()
 	defer c.mu.Unlock()
-	key := fmt.Sprintf("%s-%s", year, day)
+	key := fmt.Sprintf("%d-%d", year, day)
 	c.registry[key] = puzzle
 }
 
-func (c *Container) Get(year string, day string) (puzzle.Puzzle, error) {
+func (c *Container) Get(year int, day int) (models.Puzzle, error) {
 	c.mu.RLock()
 	defer c.mu.RUnlock()
-	key := fmt.Sprintf("%s-%s", year, day)
+	key := fmt.Sprintf("%d-%d", year, day)
 	puzzle, exists := c.registry[key]
 	if !exists {
-		return nil, fmt.Errorf("puzzle not found for year %s and day %s", year, day)
+		return nil, fmt.Errorf("puzzle not found for year %d and day %d", year, day)
 	}
 	return puzzle, nil
 }

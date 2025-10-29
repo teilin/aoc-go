@@ -6,6 +6,7 @@ import (
 	"strconv"
 
 	"github.com/teilin/aoc-go/internal/di"
+	"github.com/teilin/aoc-go/internal/puzzles/2015/day01"
 
 	"github.com/teilin/aoc-go/internal/app"
 )
@@ -29,9 +30,10 @@ func main() {
 	}
 
 	container := di.NewContainer()
-	app := app.NewApp(container)
-
-	if err := app.Run(year, day); err != nil {
-		fmt.Printf("Error running puzzle: %v\n", err)
+	app := app.App{
+		PuzzleRegistry: *container,
 	}
+	app.PuzzleRegistry.Register(2015, 1, day01.New())
+
+	app.Run(year, day)
 }
