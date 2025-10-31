@@ -69,10 +69,10 @@ func isNice(s string) bool {
 }
 
 func isEvenNicer(s string) bool {
-	if hasRepeatWithOneBetween(s) {
+	if !hasPairAppearingTwiceNoOverlap(s) {
 		return false
 	}
-	if countAdjacentSameLetters(s) < 2 {
+	if !hasRepeatWithOneBetween(s) {
 		return false
 	}
 	return true
@@ -83,6 +83,23 @@ func hasRepeatWithOneBetween(s string) bool {
 	for i := 0; i+2 < len(runes); i++ {
 		if runes[i] == runes[i+2] {
 			return true
+		}
+	}
+	return false
+}
+
+func hasPairAppearingTwiceNoOverlap(s string) bool {
+	runes := []rune(s)
+	seen := make(map[string]int)
+	for i := 0; i+1 < len(runes); i++ {
+		pair := string([]rune{runes[i], runes[i+1]})
+		if prevIdx, ok := seen[pair]; ok {
+			if prevIdx <= i-2 {
+				return true
+			}
+			// keep the earliest index to maximize chance of finding a non-overlapping match
+		} else {
+			seen[pair] = i
 		}
 	}
 	return false
