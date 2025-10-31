@@ -16,6 +16,9 @@ import (
 	"github.com/teilin/aoc-go/internal/puzzles/2015/day08"
 	"github.com/teilin/aoc-go/internal/puzzles/2015/day09"
 	"github.com/teilin/aoc-go/internal/puzzles/2015/day10"
+	"github.com/teilin/aoc-go/internal/puzzles/2015/day11"
+	"github.com/teilin/aoc-go/internal/puzzles/2015/day12"
+	"github.com/teilin/aoc-go/internal/puzzles/2015/day13"
 
 	"github.com/teilin/aoc-go/internal/app"
 )
@@ -52,6 +55,9 @@ func main() {
 	app.PuzzleRegistry.Register(2015, 8, day08.New())
 	app.PuzzleRegistry.Register(2015, 9, day09.New())
 	app.PuzzleRegistry.Register(2015, 10, day10.New())
+	app.PuzzleRegistry.Register(2015, 11, day11.New())
+	app.PuzzleRegistry.Register(2015, 12, day12.New())
+	app.PuzzleRegistry.Register(2015, 13, day13.New())
 
 	app.Run(year, day)
 }
